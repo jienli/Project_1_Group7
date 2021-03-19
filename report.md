@@ -2,34 +2,50 @@
 You'll be submitting a report along with your code that provides commentary on the tasks below.  
 
 1. **(4 points)** Run the program on your local machine to solve cases `k = 2,3,4,5,6`. For each `k`, provide `xS`, its hash value, the total time elapsed, and the number of trials.  
-
     * k=2
       * Input
-      > 
+      > spark-submit --class "project_1.main" --master "local[*]" target/scala-2.12/project_1_2.12-1.0.jar this_is_a_bitcoin_block_of_88691938_and_36198718 2 1000
       * Output
-      > 
+      > found. count:2
+        (2109811611this_is_a_bitcoin_block_of_88691938_and_36198718,00adb7c0e6944980a73f789dc1a0bc54abf3bef5f2c19a1fb302de16f7d4ea75)
+        Time elapsed:3s
     * k=3
       * Input
-      > 
+      > spark-submit --class "project_1.main" --master "local[*]" target/scala-2.12/project_1_2.12-1.0.jar this_is_a_bitcoin_block_of_88691938_and_36198718 3 3000
       * Output
-      > 
+      > found. count:1
+        (227708588this_is_a_bitcoin_block_of_88691938_and_36198718,000e767da5343299ae3d5ba456b11936596020fcc85ea676a1c577f4561666a1)
+        Time elapsed:4s
     * k=4
       * Input
-      > 
+      > spark-submit --class "project_1.main" --master "local[*]" target/scala-2.12/project_1_2.12-1.0.jar this_is_a_bitcoin_block_of_88691938_and_36198718 4 10000
       * Output
-      > 
+      > found. count:1
+        (620086861this_is_a_bitcoin_block_of_88691938_and_36198718,000016d4e3930d358e9475a2c17934236f762d0cd6c99058db6896d269261f37)
+        Time elapsed:3s
     * k=5
       * Input
-      > 
+      > spark-submit --class "project_1.main" --master "local[*]" target/scala-2.12/project_1_2.12-1.0.jar this_is_a_bitcoin_block_of_88691938_and_36198718 5 1000000
       * Output
-      > 
+      > found. count:1
+        (1568524851this_is_a_bitcoin_block_of_88691938_and_36198718,00000a667463124b4a6cbdd5945b80e238f021649cbb41d9dd4e628ebcff456a)
+        Time elapsed:6s
     * k=6
       * Input
-      > (base) MacBook-Air:Project_1_Group7 jienli$ spark-submit --class "project_1.main" --master "local[*]" target/scala-2.12/project_1_2.12-1.0.jar this_is_a_bitcoin_block_of_88691938_and_36198718 6 100000000
+      > spark-submit --class "project_1.main" --master "local[*]" target/scala-2.12/project_1_2.12-1.0.jar this_is_a_bitcoin_block_of_88691938_and_36198718 6 100000000
       * Output
       > found. count:2
         (1480674721this_is_a_bitcoin_block_of_88691938_and_36198718,000000d6da260c3ebc1cb32151fcc66e6bc4b680065d4d8e954f57bd5049b2b9)
         Time elapsed:85s
+   
+   Summary
+   |k|#Trials|Time Elapsed(s)|xS|Hash Value|
+   |:---:|:---:|:---:|:---:|:---:|
+   |2|1000|3|2109811611this_is_a_bitcoin_block_of_88691938_and_36198718|00adb7c0e6944980a73f789dc1a0bc54abf3bef5f2c19a1fb302de16f7d4ea75|
+   |3|3000|4|227708588this_is_a_bitcoin_block_of_88691938_and_36198718|000e767da5343299ae3d5ba456b11936596020fcc85ea676a1c577f4561666a1|
+   |4|10000|3|620086861this_is_a_bitcoin_block_of_88691938_and_36198718|000016d4e3930d358e9475a2c17934236f762d0cd6c99058db6896d269261f37|
+   |5|1000000|6|1568524851this_is_a_bitcoin_block_of_88691938_and_36198718|00000a667463124b4a6cbdd5945b80e238f021649cbb41d9dd4e628ebcff456a|
+   |6|100000000|85|1480674721this_is_a_bitcoin_block_of_88691938_and_36198718|000000d6da260c3ebc1cb32151fcc66e6bc4b680065d4d8e954f57bd5049b2b9|
         
 2. **(3 points)** Run the program on GCP to solve the case `k = 7`. Provide `xS`, its hash value, the total time elapsed, and the number of trials. Describe your cluster's configuration (number of machines, number/type of cores, etc.) and your process for estimating the number of trials needed in order to find the nonce.  
 
