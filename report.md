@@ -1,5 +1,5 @@
-## Reporting your findings
-You'll be submitting a report along with your code that provides commentary on the tasks below.  
+### CSCI3390 Large Scale Data Processing  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (Jien Li, Xinyu Yao)
+# Reporting your findings
 
 1. **(4 points)** Run the program on your local machine to solve cases `k = 2,3,4,5,6`. For each `k`, provide `xS`, its hash value, the total time elapsed, and the number of trials.  
     * k=2
