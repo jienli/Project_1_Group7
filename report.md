@@ -48,6 +48,31 @@ You'll be submitting a report along with your code that provides commentary on t
    |6|100000000|85|1480674721this_is_a_bitcoin_block_of_88691938_and_36198718|000000d6da260c3ebc1cb32151fcc66e6bc4b680065d4d8e954f57bd5049b2b9|
         
 2. **(3 points)** Run the program on GCP to solve the case `k = 7`. Provide `xS`, its hash value, the total time elapsed, and the number of trials. Describe your cluster's configuration (number of machines, number/type of cores, etc.) and your process for estimating the number of trials needed in order to find the nonce.  
+   
+   k|#Trials|Time Elapsed(s)|xS|Hash Value|
+   |:---:|:---:|:---:|:---:|:---:|
+   |7|1000000000|3890|480888476this_is_a_bitcoin_block_of_88691938_and_36198718|000000028dcd3eecf1a309dcc2f5df73f7503ead72d65f4e400e231f574f5836|
+   
+   Screenshots of the result and the configuration is attached below:
+   
+   ![3701616200889_ pic_hd](https://user-images.githubusercontent.com/35572120/111854047-ac0e9780-88f3-11eb-8634-17af83c2e6d7.jpg)
+   ![3711616201132_ pic_hd](https://user-images.githubusercontent.com/35572120/111854134-19222d00-88f4-11eb-8ed5-93ea7679d247.jpg)
 
 
 3. **(3 points)** Modify **one** line of code in **src/main/scala/project_1/main.scala** so that the program generates the potential nonce from 1 to `n` (the number of trials) instead of randomly. Discuss whether or not this is more efficient than the randomized approach.
+   -  Original
+      ``` 
+      val nonce = sc.range(0, trials).mapPartitionsWithIndex((indx, iter) => {  
+         val rand = new scala.util.Random(indx + seed)  
+         iter.map(x => rand.nextInt(Int.MaxValue - 1) + 1)  
+      })
+      ```
+    
+   -  Modified
+      ``` 
+      val nonce = sc.range(0, trials).mapPartitionsWithIndex((indx, iter) => {  
+         >  val rand = new scala.util.Random(indx + seed)  
+         >  iter.map(x => x)  
+      })
+      ```
+   -  We think for the current situation where only one miner is calculating the nonce, a sequential nonce generation is more efficient becuase it ensures that there is no overlap of nonce generated. However, in a realistic bitcoin mining situation, random generation of nonce is more efficient because there are many miners generating nonce and if everyone starts from 0 and increment sequentially, most of the work will be redundant and wasteful.
