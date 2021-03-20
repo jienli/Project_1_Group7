@@ -71,8 +71,8 @@ You'll be submitting a report along with your code that provides commentary on t
    -  Modified
       ``` 
       val nonce = sc.range(0, trials).mapPartitionsWithIndex((indx, iter) => {  
-         >  val rand = new scala.util.Random(indx + seed)  
-         >  iter.map(x => x)  
+         val rand = new scala.util.Random(indx + seed)  
+         iter.map(x => x)  
       })
       ```
    -  We think for the current situation where only one miner is calculating the nonce, a sequential nonce generation is more efficient becuase it ensures that there is no overlap of nonce generated. However, in a realistic bitcoin mining situation, random generation of nonce is more efficient because there are many miners generating nonce and if everyone starts from 0 and increment sequentially, most of the work will be redundant and wasteful.
